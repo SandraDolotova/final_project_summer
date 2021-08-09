@@ -7,6 +7,8 @@ public class Main {
         System.out.println("Welcome! Please login");
         WelcomePanel.showWelcomeFrame();
 
+        System.out.println("commit");
+
 
     }
 }
