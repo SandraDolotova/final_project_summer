@@ -1,7 +1,5 @@
 package login;
-
 import Panels.WelcomePanel;
-
 import javax.swing.*;
 import java.sql.SQLException;
 

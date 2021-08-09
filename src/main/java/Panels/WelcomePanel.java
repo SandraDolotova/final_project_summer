@@ -5,15 +5,11 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 public class WelcomePanel {
-
-    // TODO: 09.08.2021 addNewUser ;
     // TODO: 09.08.2021  sql tables ;
     
 
     public static JTextField loginField = new JTextField(10);
     public static JTextField passField = hidePassword();
-
-
 
     public static JPanel getWelcomePanel() {
         JPanel loginPanel = new JPanel();
@@ -24,19 +20,16 @@ public class WelcomePanel {
         loginPanel.add(buttonEnter());
         return loginPanel;
     }
-
     public static JPasswordField hidePassword(){
         JPasswordField jPasswordField = new JPasswordField(10);
         jPasswordField.setEchoChar('*');
         return jPasswordField;
     }
-
     public static JButton buttonEnter() {
         JButton enter = new JButton("ENTER");
         enter.addActionListener(action());
         return enter;
     }
-
     public static ActionListener action() {
         ActionListener actionListener = e -> {
             UserValidation userValidation = new UserValidation();
@@ -48,7 +41,6 @@ public class WelcomePanel {
         };
         return actionListener;
     }
-
     public static void showWelcomeFrame() {
         JFrame frame = new JFrame("Welcome Panel");
         frame.pack();
