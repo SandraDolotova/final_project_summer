@@ -1,6 +1,6 @@
 package decor;
-import DB.DBHandler;
-import DB.Queries;
+import db.DBHandler;
+import db.Queries;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

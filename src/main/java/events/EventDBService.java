@@ -1,8 +1,7 @@
 package events;
 
-import DB.DBHandler;
-import DB.Queries;
-import decor.Decor;
+import db.DBHandler;
+import db.Queries;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
