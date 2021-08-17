@@ -1,0 +1,28 @@
+package decotations;
+
+public enum BirthdayDecorationType {
+    FLOWERS,
+    PILLOWS,
+    BALOONS,
+    ROUNDTABLE,
+    SQUARETABLE,
+    CHAIRS,
+    TABLECLOTH,
+    SMALLVASES,
+    BIGVASES,
+    CANDLES,
+    CANDLESTICKS,
+    GLASSCANDLESTICKS,
+    WINEGLASSES,
+    SHOTGLASSES,
+    WHISKEYGLASSES,
+    CHAMPAGNEGLASSES,
+    JUICEGLASSES,
+    FORKS,
+    SPOONS,
+    NAPKINS,
+    PLATES,
+    TABLESPOONS,
+    DESSERTSPOONS,
+    KNIFES
+}
