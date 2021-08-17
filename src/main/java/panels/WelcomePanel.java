@@ -1,12 +1,10 @@
-package Panels;
-import login.UserValidation;
+package panels;
+import customer.CustomerValidation;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 public class WelcomePanel {
-    // TODO: 09.08.2021 sql tables ;
-    
 
     public static JTextField loginField = new JTextField(10);
     public static JTextField passField = hidePassword();
@@ -32,7 +30,7 @@ public class WelcomePanel {
     }
     public static ActionListener action() {
         ActionListener actionListener = e -> {
-            UserValidation userValidation = new UserValidation();
+            CustomerValidation userValidation = new CustomerValidation();
             try {
                 userValidation.login();
             } catch (SQLException exception) {

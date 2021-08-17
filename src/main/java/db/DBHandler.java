@@ -1,4 +1,4 @@
-package DB;
+package db;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import java.sql.Connection;
