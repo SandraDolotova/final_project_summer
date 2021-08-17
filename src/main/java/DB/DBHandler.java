@@ -1,9 +1,8 @@
 package DB;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+
+import java.sql.*;
 
 public class DBHandler {
     PropertiesConfiguration databaseProperties = new PropertiesConfiguration();
@@ -33,4 +32,25 @@ public class DBHandler {
     public Connection getConnection() {
         return connection;
     }
+
+    public static void close(PreparedStatement pr, Connection connection) {
+        try {
+            pr.close();
+            connection.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    public static void close (ResultSet result, PreparedStatement pr, Connection connection) throws SQLException {
+        try {
+            result.close();
+            pr.close();
+            connection.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
+
 }
