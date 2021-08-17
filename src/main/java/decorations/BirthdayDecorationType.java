@@ -1,4 +1,4 @@
-package decotations;
+package decorations;
 
 public enum BirthdayDecorationType {
     FLOWERS,
