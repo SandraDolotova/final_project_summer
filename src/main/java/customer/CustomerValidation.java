@@ -1,11 +1,12 @@
-package login;
-import Panels.WelcomePanel;
+package customer;
+
+import panels.WelcomePanel;
+
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class UserValidation extends WelcomePanel {
-
-    UserDBService userDBService = new UserDBService();
+public class CustomerValidation extends WelcomePanel {
+    CustomerDBService userDBService = new CustomerDBService();
     String userInputLoginName = loginField.getText();
     String userInputPassword = passField.getText();
 
@@ -26,5 +27,3 @@ public class UserValidation extends WelcomePanel {
     }
     private static JFrame dialogFrame;
 }
-
-

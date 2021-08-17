@@ -1,9 +1,10 @@
-package login;
+package customer;
+
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class UserRegistration {
-    UserDBService userDBService = new UserDBService();
+public class CustomerRegistration {
+    CustomerDBService userDBService = new CustomerDBService();
 
     //to get data from user Input
     public void collectNewUserInfo() throws SQLException {
@@ -19,5 +20,4 @@ public class UserRegistration {
             JOptionPane.showMessageDialog(null, "ERROR. New user ws not added");
         }
     }
-
 }

@@ -1,4 +1,4 @@
-import Panels.WelcomePanel;
+import panels.WelcomePanel;
 
 public class Main {
 
