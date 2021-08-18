@@ -50,7 +50,6 @@ public class DecorDBService {
             decors.add(new Decor(
                     result.getInt("decor_id"),
                     result.getString("decor_name"),
-                    result.getInt("decor_qwt"),
                     result.getDouble("decor_price_vat")));
         }
         DBHandler.close(pr, dbHandler.getConnection());
@@ -74,7 +73,6 @@ public class DecorDBService {
         return decors;
     }
     // SHOW SINGLE DECOR ITEM BY ID
-    public static final String showSingleDecorByID = "SELECT decor_id, decor_name, decor_qwt, decor_price_vat FROM decor_list WHERE decor_id = ?";
     public Decor showSingleDecor(int decorId) throws SQLException {
         Decor decor = null;
         PreparedStatement pr = dbHandler.getConnection().prepareStatement(Queries.showSingleDecorByID);
