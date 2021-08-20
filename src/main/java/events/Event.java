@@ -1,14 +1,21 @@
 package events;
-
+import lombok.Getter;
 import java.sql.Date;
 
+@Getter
 public class Event {
-    public EventType eventType;
-    public String decoration;
-    public String eventLocation;
-    public Date eventDate;
-    private double eventCoast;
-    public int guestQuantity;
 
+    int eventId;
+    String eventName;
+    Date dueDate;
+    String location;
+    int guestNumber;
 
+    public Event(int eventId, String eventName, Date dueDate, String location, int guestNumber) {
+        this.eventId = eventId;
+        this.eventName = eventName;
+        this.dueDate = dueDate;
+        this.location = location;
+        this.guestNumber = guestNumber;
+    }
 }

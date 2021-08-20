@@ -1,12 +1,10 @@
-package customer;
-
-import panels.WelcomePanel;
-
+package users;
+import Panels.WelcomePanel;
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class CustomerValidation extends WelcomePanel {
-    CustomerDBService userDBService = new CustomerDBService();
+public class UserValidation extends WelcomePanel {
+    UserDBService userDBService = new UserDBService();
     String userInputLoginName = loginField.getText();
     String userInputPassword = passField.getText();
 

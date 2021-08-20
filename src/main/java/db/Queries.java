@@ -7,6 +7,7 @@ public class Queries {
     //USERS
     public static final String userValidation = "SELECT login_name, user_password FROM user_validation";
     public static final String insertNewUser = "INSERT INTO user_validation (login_name, user_password, phone, email) VALUES (?, ?, ?, ?)";
+    public static final String checkLoginNameExists = "SELECT * FROM user_validation WHERE login_name = ?";
     public static final String showUserList = "SELECT id, login_name, user_name, phone, email FROM user_validation";
 
     //DECOR
@@ -19,7 +20,7 @@ public class Queries {
     // UPDATE DECOR PRICE IN TABLE
     public static final String updateDecorPrice = "UPDATE decor_list SET decor_price = ? WHERE decor_id = ?";
     // SHOW ALL DECORATIONS FOR CUSTOMER
-    public static final String showAllDecorCustomer = "SELECT decor_id, decor_name, decor_qwt, decor_price_vat FROM decor_list";
+    public static final String showAllDecorCustomer = "SELECT decor_id, decor_name, decor_price_vat FROM decor_list";
     // SHOW ALL DECORATIONS FOR ADMIN
     public static final String showAllDecorAdmin = "SELECT decor_id, decor_name, decor_qwt, decor_price, decor_price_vat, decor_status FROM decor_list";
     // SHOW SINGLE DECOR ITEM BY ID
@@ -52,6 +53,7 @@ public class Queries {
     public static final String showTrueGuests = "SELECT guest_name FROM event_guest_list WHERE participation = 1";
     //SHOW ALL GUESTS = false
     public static final String showFalseGuests = "SELECT guest_name FROM event_guest_list WHERE participation = 0";
+
 
 
     //BILL
