@@ -28,4 +28,9 @@ public class Decor {
         this.decorPriceVAT = decorPriceVAT;
     }
 
+    public Decor(int decorId, String decorName, double decorPriceVAT) {
+        this.decorId = decorId;
+        this.decorName = decorName;
+        this.decorPriceVAT = decorPriceVAT;
+    }
 }

@@ -35,6 +35,23 @@ public class UserDBService {
         return mapResult;
     }
 
+    // to validate userName input while register new user in the system
+    public boolean checkLoginNameExists(String userLoginName) throws SQLException {
+        boolean userLoginNameExists = false;
+        try{
+            PreparedStatement preparedStatement = dbHandler.getConnection().prepareStatement(Queries.checkLoginNameExists);
+            preparedStatement.setString(1, userLoginName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                userLoginNameExists = true;
+                System.out.println("such login name already exists");
+                }
+            }catch(SQLException exc){
+            exc.printStackTrace();
+        }
+        return userLoginNameExists;
+    }
+
     //to register new user in DB
     public void addNewUser(String userName, String userPassword, String userEmail, int phoneNumber) throws SQLException {
         PreparedStatement preparedStatement = dbHandler.getConnection().prepareStatement(Queries.insertNewUser);

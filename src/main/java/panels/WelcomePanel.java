@@ -1,5 +1,6 @@
-package panels;
-import customer.CustomerValidation;
+package Panels;
+import users.UserValidation;
+
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -30,7 +31,7 @@ public class WelcomePanel {
     }
     public static ActionListener action() {
         ActionListener actionListener = e -> {
-            CustomerValidation userValidation = new CustomerValidation();
+            UserValidation userValidation = new UserValidation();
             try {
                 userValidation.login();
             } catch (SQLException exception) {
