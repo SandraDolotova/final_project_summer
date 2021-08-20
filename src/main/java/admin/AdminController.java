@@ -2,7 +2,9 @@ package admin;
 
 public class AdminController {
 
-    public void addEventType(){}
+    public void addEventType(){
+
+    }
     public void addDecorations(){}
     public void addFreeDates(){}
     public void updateEvent(){

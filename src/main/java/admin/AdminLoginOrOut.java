@@ -14,5 +14,7 @@ public class AdminLoginOrOut {
         admin.password = scanner.nextLine();
     }
 
-    public void adminLogOut(){}
+    public void adminLogOut(){
+
+    }
 }
