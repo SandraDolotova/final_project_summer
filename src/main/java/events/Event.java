@@ -11,6 +11,7 @@ public class Event {
     String location;
     int guestNumber;
 
+
     public Event(int eventId, String eventName, Date dueDate, String location, int guestNumber) {
         this.eventId = eventId;
         this.eventName = eventName;

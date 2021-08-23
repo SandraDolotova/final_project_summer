@@ -23,6 +23,7 @@ public class EventDBService {
         DBHandler.close(pr, dbHandler.getConnection());
     }
     // DELETE EVENT
+
     public static final String deleteEvent = "DELETE FROM events WHERE event_name = ?";
     public void deleteEvent(String eventName) throws SQLException {
         PreparedStatement pr = dbHandler.getConnection().prepareStatement(Queries.deleteEvent);
