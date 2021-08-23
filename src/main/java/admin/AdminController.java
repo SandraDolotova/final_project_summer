@@ -14,6 +14,7 @@ public class AdminController {
         //decoration
         //payment
         //participants
+
     }
     public void deleteEvent(){
         //date
