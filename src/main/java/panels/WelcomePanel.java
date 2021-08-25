@@ -1,4 +1,4 @@
-package Panels;
+package panels;
 import users.UserValidation;
 
 import javax.swing.*;
@@ -9,7 +9,6 @@ public class WelcomePanel {
 
     public static JTextField loginField = new JTextField(10);
     public static JTextField passField = hidePassword();
-
     public static JPanel getWelcomePanel() {
         JPanel loginPanel = new JPanel();
         loginPanel.add(new JLabel("Login: "));

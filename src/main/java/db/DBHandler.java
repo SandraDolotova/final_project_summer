@@ -32,7 +32,7 @@ public class DBHandler {
         return connection;
     }
 
-    public static void close(PreparedStatement pr, Connection connection) {
+   public static void close(PreparedStatement pr, Connection connection) {
         try {
             pr.close();
             connection.close();
@@ -40,7 +40,7 @@ public class DBHandler {
             ex.printStackTrace();
         }
     }
-    public static void close (ResultSet result, PreparedStatement pr, Connection connection) throws SQLException {
+    public static void close (ResultSet result, PreparedStatement pr, Connection connection){
         try {
             result.close();
             pr.close();
@@ -49,7 +49,4 @@ public class DBHandler {
             ex.printStackTrace();
         }
     }
-
-
-
 }
