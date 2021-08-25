@@ -12,11 +12,12 @@ public class Queries {
 
     //DECOR
     // INSERT DECORATION INTO TABLE
-    public static final String insertNewDecor = "INSERT INTO decor_list (decor_name, decor_qwt, decor_price) VALUES (?, ?, ?)";
+    public static final String insertNewDecor = "INSERT INTO decor_list (decor_name, decor_qwt, decor_price, decor_status) VALUES (?, ?, ?, ?)";
     //SET DECOR STATUS - value chosen by ADMIN from ComboBox = like out of stock, broken, not available
-    public static final String setDecorStatus = "INSERT INTO decor_list (decor_status) VALUES (?) WHERE id = ?";
+    public static final String setDecorStatus = "INSERT INTO decor_list (decor_status) VALUES (?) WHERE decor_id = ?";
     //DELETE DECOR
-    public static final String deleteDecor = "DELETE FROM decor_list WHERE id = ?";
+
+    public static final String deleteDecor = "DELETE FROM decor_list WHERE decor_id = ?";
     // UPDATE DECOR PRICE IN TABLE
     public static final String updateDecorPrice = "UPDATE decor_list SET decor_price = ? WHERE decor_id = ?";
     // SHOW ALL DECORATIONS FOR CUSTOMER
@@ -24,7 +25,7 @@ public class Queries {
     // SHOW ALL DECORATIONS FOR ADMIN
     public static final String showAllDecorAdmin = "SELECT decor_id, decor_name, decor_qwt, decor_price, decor_price_vat, decor_status FROM decor_list";
     // SHOW SINGLE DECOR ITEM BY ID
-    public static final String showSingleDecorByID = "SELECT decor_id, decor_name, decor_qwt, decor_price_vat FROM decor_list WHERE decor_id = ?";
+    public static final String showSingleDecorByID = "SELECT decor_id, decor_name, decor_qwt, decor_price, decor_price_vat, decor_status FROM decor_list WHERE decor_id = ?";
 
 
     //EVENTS
