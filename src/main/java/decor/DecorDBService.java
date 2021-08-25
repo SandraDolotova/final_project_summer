@@ -10,35 +10,35 @@ public class DecorDBService {
     DBHandler dbHandler = new DBHandler();
 
     // INSERT DECORATION INTO TABLE
-    public void insertNewDecor(String decorName, int decorQwt, double decorPrice) throws SQLException {
+    public void insertNewDecor(String decorName, int decorQwt, double decorPrice, String decorStatus) throws SQLException {
         PreparedStatement pr = dbHandler.getConnection().prepareStatement(Queries.insertNewDecor);
         pr.setString(1, decorName);
         pr.setInt(2, decorQwt);
         pr.setDouble(3, decorPrice);
+        pr.setString(4, decorStatus);
         pr.execute();
-        DBHandler.close(pr, dbHandler.getConnection());
         }
 
     //SET DECOR STATUS - value chosen by ADMIN from ComboBox = like out of stock, broken, not available
-    public void setDecorStatus (String decorStatus) throws SQLException {
+    public void setDecorStatus (int decorId , String decorStatus) throws SQLException {
         PreparedStatement pr = dbHandler.getConnection().prepareStatement(Queries.setDecorStatus);
-        pr.setString(1, decorStatus);
-        pr.execute();
-        DBHandler.close(pr, dbHandler.getConnection());
+        pr.setInt(1, decorId);
+        pr.setString(2, decorStatus);
+        pr.executeUpdate();
     }
     //DELETE DECOR
     public void deleteDecor(int decorId) throws SQLException {
         PreparedStatement pr = dbHandler.getConnection().prepareStatement(Queries.deleteDecor);
         pr.setInt(1, decorId);
-        pr.executeUpdate();
-        DBHandler.close(pr, dbHandler.getConnection());
+        pr.execute();
     }
+
     // UPDATE DECOR PRICE IN TABLE
-    public void updateDecorPrice(int decorId) throws SQLException {
+    public void updateDecorPrice(int decorId, double newPrice) throws SQLException {
         PreparedStatement pr = dbHandler.getConnection().prepareStatement(Queries.updateDecorPrice);
         pr.setInt(1, decorId);
+        pr.setDouble(2, newPrice);
         pr.executeUpdate();
-        DBHandler.close(pr, dbHandler.getConnection());
     }
     // SHOW ALL DECORATIONS FOR CUSTOMER
     //if(decorStatus = available) -> showAllDecor();
@@ -69,12 +69,12 @@ public class DecorDBService {
                     result.getDouble("decor_price_vat"),
                     result.getString("decor_status")));
         }
-        DBHandler.close(pr, dbHandler.getConnection());
         return decors;
     }
+
     // SHOW SINGLE DECOR ITEM BY ID
     public Decor showSingleDecor(int decorId) throws SQLException {
-        Decor decor = null;
+        Decor decor = new Decor();
         PreparedStatement pr = dbHandler.getConnection().prepareStatement(Queries.showSingleDecorByID);
         pr.setInt(1, decorId);
         ResultSet result = pr.executeQuery();
@@ -83,9 +83,11 @@ public class DecorDBService {
                     result.getInt("decor_id"),
                     result.getString("decor_name"),
                     result.getInt("decor_qwt"),
-                    result.getDouble("decor_price_vat"));
-            DBHandler.close(pr, dbHandler.getConnection());
-        }return decor;
+                    result.getInt("decor_price"),
+                    result.getDouble("decor_price_vat"),
+                    result.getString("decor_status"));
+        }
+        return decor;
     }
 
 }

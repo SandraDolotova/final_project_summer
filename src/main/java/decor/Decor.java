@@ -1,6 +1,8 @@
 package decor;
 import lombok.Getter;
+import lombok.Setter;
 
+@Setter
 @Getter
 public class Decor {
 
@@ -10,6 +12,8 @@ public class Decor {
     double decorPrice;
     double decorPriceVAT;
     String decorStatus;
+
+public Decor(){}
 
 
     public Decor(int decorId, String decorName, int decorQwt, double decorPrice, double decorPriceVAT, String decorStatus) {
@@ -32,5 +36,15 @@ public class Decor {
         this.decorId = decorId;
         this.decorName = decorName;
         this.decorPriceVAT = decorPriceVAT;
+    }
+
+    @Override
+    public String toString() {
+        return decorId +
+                " \t | " + decorName +
+                " \t | " + decorQwt +
+                " \t | " + decorPrice +
+                " \t | " + decorPriceVAT +
+                " \t | " + decorStatus;
     }
 }
