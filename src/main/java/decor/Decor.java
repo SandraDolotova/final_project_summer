@@ -13,7 +13,7 @@ public class Decor {
     double decorPriceVAT;
     String decorStatus;
 
-public Decor(){}
+    public Decor(){}
 
 
     public Decor(int decorId, String decorName, int decorQwt, double decorPrice, double decorPriceVAT, String decorStatus) {
