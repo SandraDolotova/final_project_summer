@@ -76,7 +76,7 @@ public class UserDBService {
                         result.getString("email"),
                         result.getInt("phone")));
             }
-            DBHandler.close(pr, dbHandler.getConnection());
+            pr.close();
             return users;
         }
     }
@@ -85,7 +85,7 @@ public class UserDBService {
         PreparedStatement pr = dbHandler.getConnection().prepareStatement(Queries.insertGuests);
         pr.setString(1, guestFullName);
         pr.execute();
-        DBHandler.close(pr, dbHandler.getConnection());
+        pr.close();
     }
 
     // DELETE FROM GUEST LIST
@@ -93,7 +93,7 @@ public class UserDBService {
         PreparedStatement pr = dbHandler.getConnection().prepareStatement(Queries.deleteGuest);
         pr.setInt(1, guestId);
         pr.executeUpdate();
-        DBHandler.close(pr, dbHandler.getConnection());
+        pr.close();
     }
     // UPDATE GUEST LIST - customer sets participation status for his guests
     //
@@ -101,7 +101,7 @@ public class UserDBService {
         PreparedStatement pr = dbHandler.getConnection().prepareStatement(Queries.setGuestStatus);
         pr.setString(1, eventName);
         pr.executeUpdate();
-        DBHandler.close(pr, dbHandler.getConnection());
+        pr.close();
     }
 
     // SHOW ALL GUESTS FROM THE LIST
@@ -116,7 +116,7 @@ public class UserDBService {
                     result.getString("guest_name"),
                     result.getBoolean("participation")));
         }
-        DBHandler.close(pr, dbHandler.getConnection());
+        pr.close();
         return users;
     }
 }
