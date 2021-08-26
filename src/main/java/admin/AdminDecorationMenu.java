@@ -2,7 +2,7 @@ package admin;
 import javax.swing.*;
 import java.util.Scanner;
 
-public class AdminMenu {
+public class AdminDecorationMenu {
     AdminController adminController = new AdminController();
     Scanner scanner = new Scanner(System.in);
     Admin admin = new Admin();
@@ -14,7 +14,7 @@ public class AdminMenu {
             admin.email = scanner.nextLine();
             System.out.println("Enter password!");
             admin.password = scanner.nextLine();
-            adminMenu();
+            adminDecorationMenu();
             adminLogOut();
         }catch (Exception e){
             e.printStackTrace();
@@ -23,7 +23,7 @@ public class AdminMenu {
 
     public void adminLogOut(){}
 
-    public void adminMenu(){
+    public void adminDecorationMenu(){
 
         String adminChoice = JOptionPane.showInputDialog(null, "Choose option:\n"
         + "\n1. Add Decoration"
@@ -32,6 +32,7 @@ public class AdminMenu {
         + "\n4. See All Decorations"
         + "\n5. See Single Decoration"
         + "\n6. Update Decor Price"
+                + "\n 7.Update Decor Quantity"
         + "\n8. Exit");
         switch (adminChoice){
             case "1":
@@ -41,7 +42,7 @@ public class AdminMenu {
                 adminController.deleteDecoration();
                 break;
             case "3":
-               // adminController.decorStatus();
+               adminController.decorStatus();
                 break;
             case "4":
                 adminController.getAllDecorsFromDB();
@@ -53,6 +54,7 @@ public class AdminMenu {
                 adminController.updatePrice();
                 break;
             case "7":
+                adminController.updateQuantity();
                 break;
             case "8":
                 System.exit(0);
@@ -60,6 +62,6 @@ public class AdminMenu {
             default:
                 break;
         }
-        adminMenu();
+        adminDecorationMenu();
     }
 }
