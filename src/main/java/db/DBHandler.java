@@ -31,22 +31,4 @@ public class DBHandler {
     public Connection getConnection() {
         return connection;
     }
-
-   public static void close(PreparedStatement pr, Connection connection) {
-        try {
-            pr.close();
-            connection.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    public static void close (ResultSet result, PreparedStatement pr, Connection connection){
-        try {
-            result.close();
-            pr.close();
-            connection.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
 }
