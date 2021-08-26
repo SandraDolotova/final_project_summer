@@ -1,19 +1,25 @@
 package admin;
 import decor.Decor;
 import decor.DecorDBService;
+import events.Event;
+import events.EventDBService;
 
 import javax.swing.*;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class AdminController {
-AdminDBService adminDBService = new AdminDBService();
 DecorDBService decorDBService = new DecorDBService();
+EventDBService eventDBService = new EventDBService();
 
-    private String decorListTitle = "ID \t| Name \t| Quantity \t| Price \t| Price vat \t| Status\n";
+    private final String decorListTitle = "ID \t| Name \t| Quantity \t| Price \t| Price vat \t| Status\n\n";
+    private final String eventListTitle = "ID \t| Name \t| Date \t| Time \t| Location \t| Guests\n\n";
 
-//funkcijas, kas strādā:
+    //ALL METHODS ABOUT ADMIN CONTROLLING DECORATIONS:
+    //methods that works:
     public void addDecorations(){
         try {
             String name = JOptionPane.showInputDialog(null, "Decor name:");
@@ -44,7 +50,6 @@ DecorDBService decorDBService = new DecorDBService();
             decorList = decorDBService.showAllDecorAdmin();
         }catch (SQLException e){
             e.printStackTrace();
-            System.out.println();
         }
         String message = decorListTitle + decorList.stream().map(Decor::toString).collect(Collectors.joining("\n"));
         JOptionPane.showMessageDialog(null, message);
@@ -59,11 +64,6 @@ DecorDBService decorDBService = new DecorDBService();
         }
         JOptionPane.showMessageDialog(null, decorListTitle + decor);
     }
-
-
-
-
-    //funkcijas, kas nestrādā:
     public void updatePrice(){
         try {
             int decorId = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter decor ID you want to update:"));
@@ -75,7 +75,20 @@ DecorDBService decorDBService = new DecorDBService();
             JOptionPane.showMessageDialog(null, "Error occurred while updating decor price");
         }
     }
+    public void updateQuantity(){
+        try {
+            int decorId = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter decor ID you want to update:"));
+            int newQuantity = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter new quantity:"));
+            decorDBService.updateDecorQuantity(decorId, newQuantity);
+            JOptionPane.showMessageDialog(null, "Decor quantity updated successfully!");
+        }catch (SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error occurred while updating decor quantity");
+        }
+    }
 
+
+    //methods that doesn't work:
     public void decorStatus(){
         String info = "Enter decor ID:";
         int decorId  = Integer.parseInt(JOptionPane.showInputDialog(info));
@@ -89,28 +102,77 @@ DecorDBService decorDBService = new DecorDBService();
 
         }
     }
-    public void updateDecoration(){}
+
+
+    //ALL METHODS ABOUT ADMIN CONTROLLING EVENT:
+    //method that works:
+    public void addEvent(){
+        try {
+            String name = JOptionPane.showInputDialog(null, "Enter Event Name:");
+            Date date = Date.valueOf(JOptionPane.showInputDialog(null, "Enter event date (YYYY-MM-DD):"));
+            Time time = Time.valueOf(JOptionPane.showInputDialog(null, "Enter event time (HH:MM:SS):"));
+            String location = JOptionPane.showInputDialog(null, "Enter event location:");
+            int guestNumber = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter guest quantity:"));
+            eventDBService.insertNewEvent(name, date, time, location, guestNumber);
+            JOptionPane.showMessageDialog(null, "New Event Added successfully!");
+        }catch (SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error occurred while adding event");
+        }
+    }
+    public void deleteEventFromDB(){
+        String info = "Enter Event ID:";
+        int eventId = Integer.parseInt(JOptionPane.showInputDialog(info));
+        try {
+            eventDBService.deleteEvent(eventId);
+            JOptionPane.showMessageDialog(null, "Event deleted successfully!");
+        }catch (SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error occurred while deleting event");
+        }
+    }
+    public void getAllEventsFromDB(){
+        ArrayList<Event> eventList = new ArrayList<>();
+        try {
+            eventList = eventDBService.showAllEvents();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        String message = eventListTitle + eventList.stream().map(Event::toString).collect(Collectors.joining("\n"));
+        JOptionPane.showMessageDialog(null, message);
+    }
+    public void getSingleEventFromDB(){
+        String eventId = JOptionPane.showInputDialog(null, "Enter event ID:");
+        Event event = null;
+        try {
+            event = eventDBService.showSingleEvent(Integer.parseInt(eventId));
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(null, eventListTitle + event);
+    }
+    public void updateDate(){
+        try {
+            int eventId = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter event ID you want to update:"));
+            Date newDate = Date.valueOf(JOptionPane.showInputDialog(null, "Enter new date(YYYY-MM-DD):"));
+            eventDBService.updateEventDate(eventId, newDate);
+            JOptionPane.showMessageDialog(null, "Event Date updated successfully!");
+        }catch (SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error occurred while updating event date");
+        }
+    }
+
+
+    //methods that doesn't work:
 
 
 
     public void addFreeDates(){}
-    public void updateEvent(){
-        //date
-        //type
-        //location
-        //decoration
-        //payment
-        //participants
-
-    }
-    public void deleteEvent(){
-        //date
-        //type
-        //location
-        //decoration
-        //payment
-        //participants
-    }
     public void checkPlannedEventList(){}
+
+
+    //ALL METHODS ABOUT ADMIN LOOKING AT CUSTOMER LIST:
+    public void seeUserInfo(){}
     public void checkPaymentStatus(){}
 }
