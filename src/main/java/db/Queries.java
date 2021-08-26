@@ -20,6 +20,7 @@ public class Queries {
     public static final String deleteDecor = "DELETE FROM decor_list WHERE decor_id = ?";
     // UPDATE DECOR PRICE IN TABLE
     public static final String updateDecorPrice = "UPDATE decor_list SET decor_price = ? WHERE decor_id = ?";
+    public static final String updateDecorQuantity = "UPDATE decor_list SET decor_qwt = ? WHERE decor_id = ?";
     // SHOW ALL DECORATIONS FOR CUSTOMER
     public static final String showAllDecorCustomer = "SELECT decor_id, decor_name, decor_price_vat FROM decor_list";
     // SHOW ALL DECORATIONS FOR ADMIN
@@ -30,15 +31,15 @@ public class Queries {
 
     //EVENTS
     // INSERT INTO EVENTS
-    public static final String insertNewEvent = "INSERT INTO events (event_name, dueDate, location_name, guests_number) VALUES (?, ?, ?, ?)";
+    public static final String insertNewEvent = "INSERT INTO events (event_name, dueDate, dueTime, location_name, guests_number) VALUES (?, ?, ?, ?, ?)";
     // DELETE EVENT
-    public static final String deleteEvent = "DELETE FROM events WHERE event_name = ?";
+    public static final String deleteEvent = "DELETE FROM events WHERE event_id = ?";
     // UPDATE EVENT date
-    public static final String updateEventDate = "UPDATE events SET dueDate = ? WHERE event_name = ?";
+    public static final String updateEventDate = "UPDATE events SET dueDate = ? WHERE event_id = ?";
     // SHOW EVENT LIST for ADMIN
     public static final String showAllEvents = "SELECT * FROM events";
     // SHOW ONE EVENT
-    public static final String showSingleEvent = "SELECT event_id, event_name, dueDate, location_name, guests_number FROM events WHERE event_name = ?";
+    public static final String showSingleEvent = "SELECT event_id, event_name, dueDate, dueTime, location_name, guests_number FROM events WHERE event_id = ?";
 
 
     //GUESTS
@@ -47,7 +48,7 @@ public class Queries {
     // DELETE FROM GUEST LIST
     public static final String deleteGuest = "DELETE FROM event_guest_list WHERE guest_id = ?";
     // UPDATE GUEST LIST - customer sets participation status for his guests
-    public static final String setGuestStatus = "UPDATE event_guest_list SET participation = ? WHERE event_name = ?";
+    public static final String setGuestStatus = "UPDATE event_guest_list SET participation = ? WHERE event_id = ?";
     // SHOW ALL GUESTS FROM THE LIST
     public static final String showAllGuests = "SELECT * FROM event_guest_list";
     //SHOW ALL GUESTS = true
