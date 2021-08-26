@@ -1,4 +1,5 @@
 DROP DATABASE event_manager;
+SET GLOBAL time_zone = '+3:00';
 CREATE DATABASE IF NOT EXISTS event_manager;
 use event_manager;
 
@@ -16,6 +17,7 @@ CREATE table IF NOT EXISTS events (  -- customer or owner can add/delete/update
 event_id int auto_increment not null,
 event_name varchar(50) not null,
 dueDate date not null,
+dueTime time,
 location_name varchar (50) not null,
 guests_number int not null,
 primary key(event_id)
@@ -27,6 +29,7 @@ guest_name varchar (50) not null,
 participation boolean,
 event_name varchar(50) not null,
 event_date date not null,
+event_time time not null,
 primary key(guest_id)
 );
 
@@ -43,19 +46,25 @@ primary key(decor_id)
 CREATE table bill ( -- table for bill will be completed from customer inputs
 bill_id int auto_increment not null,
 event_name varchar (50) not null,
-chosen_decor_id int,
+chosen_decor_id int not null,
 chosen_decor_name varchar(50) not null,
 chosen_decor_price_vat real,
 chosen_decor_qwt int not null,
 total_decor_price real AS (chosen_decor_qwt * chosen_decor_price_vat),
 transportation_costs real AS (total_decor_price * 1.15),
 total_bill real AS (total_decor_price + transportation_costs),
-foreign key(bill_id) references events (event_id)
+foreign key(bill_id) references events (event_id),
+primary key(bill_id)
 );
 
 use event_manager;
 select * from decor_list;
-DELETE FROM decor_list WHERE id = 11;
+select * from events;
+DELETE FROM decor_list WHERE decor_id = 1;
+UPDATE decor_list SET decor_price = 2.50 WHERE decor_id = 15;
+
+UPDATE decor_list SET decor_qwt = 17 WHERE decor_id = 17;
+
 
 INSERT INTO decor_list (decor_name, decor_qwt, decor_price, decor_status) VALUES ('weddings Arch round', '5', '300', 'available');
 INSERT INTO decor_list (decor_name, decor_qwt, decor_price, decor_status) VALUES ('weddings Arch square', '3', '250.50', 'available');
