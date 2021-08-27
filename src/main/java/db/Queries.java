@@ -34,8 +34,13 @@ public class Queries {
     public static final String insertNewEvent = "INSERT INTO events (event_name, dueDate, dueTime, location_name, guests_number) VALUES (?, ?, ?, ?, ?)";
     // DELETE EVENT
     public static final String deleteEvent = "DELETE FROM events WHERE event_id = ?";
-    // UPDATE EVENT date
+    // UPDATE EVENT
+    public static final String updateEventName = "UPDATE events SET event_name = ? WHERE event_id = ?";
     public static final String updateEventDate = "UPDATE events SET dueDate = ? WHERE event_id = ?";
+    public static final String updateEventTime = "UPDATE events SET dueTime = ? WHERE event_id = ?";
+    public static final String updateEventLocation = "UPDATE events SET location_name = ? WHERE event_id = ?";
+    public static final String updateEventGuests = "UPDATE events SET guests_number = ? WHERE event_id = ?";
+
     // SHOW EVENT LIST for ADMIN
     public static final String showAllEvents = "SELECT * FROM events";
     // SHOW ONE EVENT
