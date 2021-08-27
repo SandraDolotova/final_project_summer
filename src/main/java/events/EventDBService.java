@@ -63,9 +63,37 @@ public class EventDBService {
         return event;
     }
     // UPDATE EVENT date
+    public void updateEventName(int eventId, String newName) throws SQLException{
+        PreparedStatement pr = dbHandler.getConnection().prepareStatement(Queries.updateEventName);
+        pr.setString(1, newName);
+        pr.setInt(2, eventId);
+        pr.executeUpdate();
+        pr.close();
+    }
     public void updateEventDate(int eventId, Date newDate) throws SQLException {
         PreparedStatement pr = dbHandler.getConnection().prepareStatement(Queries.updateEventDate);
         pr.setDate(1, newDate);
+        pr.setInt(2, eventId);
+        pr.executeUpdate();
+        pr.close();
+    }
+    public void updateEventTime(int eventId, Time newTime) throws SQLException {
+        PreparedStatement pr = dbHandler.getConnection().prepareStatement(Queries.updateEventTime);
+        pr.setTime(1, newTime);
+        pr.setInt(2, eventId);
+        pr.executeUpdate();
+        pr.close();
+    }
+    public void updateEventLocation(int eventId, String newLocation) throws SQLException {
+        PreparedStatement pr = dbHandler.getConnection().prepareStatement(Queries.updateEventLocation);
+        pr.setString(1, newLocation);
+        pr.setInt(2, eventId);
+        pr.executeUpdate();
+        pr.close();
+    }
+    public void updateEventGuestQuantity(int eventId, int newGuestQuantity) throws SQLException {
+        PreparedStatement pr = dbHandler.getConnection().prepareStatement(Queries.updateEventGuests);
+        pr.setInt(1, newGuestQuantity);
         pr.setInt(2, eventId);
         pr.executeUpdate();
         pr.close();

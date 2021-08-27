@@ -12,8 +12,12 @@ public class AdminEventMenu {
                 + "\n2. Delete Event"
                 + "\n3. View All Events"
                 + "\n4. View Single Event"
-                + "\n5. Update Event Date"
-        + "\n8. Exit");
+                + "\n5. Update Event Name"
+                + "\n6. Update Event Date"
+                + "\n7. Update Event Time"
+                + "\n8. Update Event Location"
+                + "\n9. Update Event Guest Amount"
+                + "\n10. Exit");
 
         switch (adminChoice){
             case "1":
@@ -29,13 +33,21 @@ public class AdminEventMenu {
                 adminController.getSingleEventFromDB();
                 break;
             case "5":
-                adminController.updateDate();
+                adminController.updateNameEvent();
                 break;
             case "6":
+                adminController.updateDate();
                 break;
             case "7":
+                adminController.updateTime();
                 break;
             case "8":
+                adminController.updateLocation();
+                break;
+            case "9":
+                adminController.updateGuestAmount();
+                break;
+            case "10":
                 System.exit(0);
                 break;
             default:

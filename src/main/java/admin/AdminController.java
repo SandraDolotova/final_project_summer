@@ -151,6 +151,18 @@ EventDBService eventDBService = new EventDBService();
         }
         JOptionPane.showMessageDialog(null, eventListTitle + event);
     }
+
+    public void updateNameEvent(){
+        try {
+            int eventId = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter event ID you want to update:"));
+            String newName = JOptionPane.showInputDialog(null, "Enter Event new name:");
+            eventDBService.updateEventName(eventId, newName);
+            JOptionPane.showMessageDialog(null, "Event Name updated successfully!");
+        }catch (SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error occurred while updating event name");
+        }
+    }
     public void updateDate(){
         try {
             int eventId = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter event ID you want to update:"));
@@ -162,12 +174,44 @@ EventDBService eventDBService = new EventDBService();
             JOptionPane.showMessageDialog(null, "Error occurred while updating event date");
         }
     }
+    public void updateTime(){
+        try {
+            int eventId = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter event ID you want to update:"));
+            Time newTime = Time.valueOf(JOptionPane.showInputDialog(null, "Enter new time(HH:MM:00):"));
+            eventDBService.updateEventTime(eventId, newTime);
+            JOptionPane.showMessageDialog(null, "Event Time updated successfully!");
+        }catch (SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error occurred while updating event time");
+        }
+    }
+    public void updateLocation(){
+        try {
+            int eventId = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter event ID you want to update:"));
+            String newLocation = JOptionPane.showInputDialog(null, "Enter Event new location:");
+            eventDBService.updateEventLocation(eventId, newLocation);
+            JOptionPane.showMessageDialog(null, "Event location updated successfully!");
+        }catch (SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error occurred while updating event location");
+        }
+    }
+    public void updateGuestAmount(){
+        try {
+            int eventId = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter event ID you want to update:"));
+            int newGuestAmount = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter Event new guest amount:"));
+            eventDBService.updateEventGuestQuantity(eventId, newGuestAmount);
+            JOptionPane.showMessageDialog(null, "Event guest amount updated successfully!");
+        }catch (SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error occurred while updating event guest amount");
+        }
+    }
+
+
 
 
     //methods that doesn't work:
-
-
-
     public void addFreeDates(){}
     public void checkPlannedEventList(){}
 
